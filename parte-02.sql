@@ -8,9 +8,9 @@ VALUES
 INSERT INTO usuarios
 	(nome, email, senha, endereco_id)
 VALUES
-	('Cauan', 'cauan@exemple.com', '1234', 2 ),
-	('Chrystian', 'chrystian@exemple.com', '4321', 3),
-	('Matheus', 'matheus@exemple.com', '3214', 1);
+	('Cauan', 'cauan@exemple.com', '1234', (SELECT id FROM enderecos WHERE rua LIKE '%Paulista%' AND cidade = 'São Paulo')),
+	('Chrystian', 'chrystian@exemple.com', '4321', (SELECT id FROM enderecos WHERE rua LIKE '%Marcelino%' cidade = 'Curitiba')),
+	('Matheus', 'matheus@exemple.com', '3214', (SELECT id FROM enderecos WHERE rua LIKE '%Higienópolis%' AND cidade = 'Londrina'));
 
 INSERT INTO redes_sociais
 	(nome)
@@ -24,13 +24,13 @@ VALUES
 INSERT INTO usuario_rede_sociais
 	(usuario_id,rede_social_id)
 VALUES
-	(1,1),
-	(2,1),
-	(3,1),
-	(2,2),
-	(1,2),
-	(3,3),
-	(3,4),
-	(2,3),
-	(1,5);
+	((SELECT id FROM usuarios WHERE nome = 'Cauan'),(SELECT id FROM redes_sociais WHERE nome = 'Youtube')),
+	((SELECT id FROM usuarios WHERE nome = 'Chrystian'),(SELECT id FROM redes_sociais WHERE nome = 'Youtube')),
+	((SELECT id FROM usuarios WHERE nome = 'Matheus'),(SELECT id FROM redes_sociais WHERE nome = 'Youtube')),
+	((SELECT id FROM usuarios WHERE nome = 'Chrystian'),(SELECT id FROM redes_sociais WHERE nome = 'Twitter')),
+	((SELECT id FROM usuarios WHERE nome = 'Cauan'),(SELECT id FROM redes_sociais WHERE nome = 'Twitter')),
+	((SELECT id FROM usuarios WHERE nome = 'Matheus'),(SELECT id FROM redes_sociais WHERE nome = 'Instagram')),
+	((SELECT id FROM usuarios WHERE nome = 'Matheus'),(SELECT id FROM redes_sociais WHERE nome = 'Facebook')),
+	((SELECT id FROM usuarios WHERE nome = 'Chrystian'),(SELECT id FROM redes_sociais WHERE nome = 'Instagram')),
+	((SELECT id FROM usuarios WHERE nome = 'Cauan'),(SELECT id FROM redes_sociais WHERE nome = 'TikTok'));
     
