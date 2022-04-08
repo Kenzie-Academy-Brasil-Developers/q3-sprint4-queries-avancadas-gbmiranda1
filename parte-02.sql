@@ -9,7 +9,7 @@ INSERT INTO usuarios
 	(nome, email, senha, endereco_id)
 VALUES
 	('Cauan', 'cauan@exemple.com', '1234', (SELECT id FROM enderecos WHERE rua LIKE '%Paulista%' AND cidade = 'São Paulo')),
-	('Chrystian', 'chrystian@exemple.com', '4321', (SELECT id FROM enderecos WHERE rua LIKE '%Marcelino%' cidade = 'Curitiba')),
+	('Chrystian', 'chrystian@exemple.com', '4321', (SELECT id FROM enderecos WHERE rua LIKE '%Marcelino%' AND cidade = 'Curitiba')),
 	('Matheus', 'matheus@exemple.com', '3214', (SELECT id FROM enderecos WHERE rua LIKE '%Higienópolis%' AND cidade = 'Londrina'));
 
 INSERT INTO redes_sociais

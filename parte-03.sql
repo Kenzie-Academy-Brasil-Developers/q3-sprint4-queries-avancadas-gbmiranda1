@@ -4,11 +4,11 @@ SELECT * FROM enderecos;
 
 --SEGUNDA
 
-SELECT * FROM enderecos JOIN usuarios ON enderecos.id = usuarios.usuario_id;
+SELECT * FROM enderecos JOIN usuarios ON enderecos.id = usuarios.endereco_id;
 
 --TERCEIRA
 
-SELECT * FROM redes_sociais r JOIN usuarios u ON u.usuario_id = r.rede_social_id; 
+SELECT * FROM redes_sociais r JOIN usuario_rede_sociais urs ON urs.rede_social_id = r.id; 
 
 --QUARTA
 
@@ -83,4 +83,4 @@ join usuarios u
 	on u.id = urs.usuario_id 
 JOIN enderecos e
 	ON e.id = u.endereco_id 
-WHERE r.nome = 'Twiiter';
+WHERE r.nome = 'Twitter';
